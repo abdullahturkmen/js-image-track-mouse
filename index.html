@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="home" data="ali">
+        <img src="images/ali/5.jpg" class="photo">
+    </div>
+
+    <div class="home" data="esra">
+        <img src="images/esra/5.jpg" class="photo">
+    </div>
+
+    <div class="home" data="yusuf">
+        <img src="images/yusuf/5.jpg" class="photo">
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+            var items = document.getElementsByClassName('home');
+            var photo = document.getElementsByClassName('photo');
+
+            onmousemove = function (e) {
+                let mouseX = e.clientX;
+                let mouseY = e.clientY;
+
+                for (var i = 0; i < items.length; i++) {
+
+                    let user = items[i].attributes.data.value;
+                    
+                    let divWidth = items[i].offsetWidth;
+                    let divHeight = items[i].offsetHeight;
+                    let divTop = items[i].offsetTop;
+                    let divLeft = items[i].offsetLeft;
+
+                    if (mouseY < divTop) {
+                        if (mouseX < divLeft) {
+                            photo[i].src = `images/${user}/1.jpg`;
+                        }
+                        else if (mouseX > divLeft && mouseX < divLeft + divWidth) {
+                            photo[i].src = `images/${user}/2.jpg`;
+                        }
+                        else {
+                            photo[i].src = `images/${user}/3.jpg`;
+                        }
+                    }
+                    else if (mouseY > divTop && mouseY < divTop + divHeight) {
+                        if (mouseX < divLeft) {
+                            photo[i].src = `images/${user}/4.jpg`;
+                        }
+                        else if (mouseX > divLeft && mouseX < divLeft + divWidth) {
+                            photo[i].src = `images/${user}/5.jpg`;
+                        }
+                        else {
+                            photo[i].src = `images/${user}/6.jpg`;
+                        }
+                    }
+                    else {
+                        if (mouseX < divLeft) {
+                            photo[i].src = `images/${user}/7.jpg`;
+                        }
+                        else if (mouseX > divLeft && mouseX < divLeft + divWidth) {
+                            photo[i].src = `images/${user}/8.jpg`;
+                        }
+                        else {
+                            photo[i].src = `images/${user}/9.jpg`;
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
